@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Rollbar\Payload\Level;
 use Rollbar\Rollbar;
 
 /*
@@ -15,10 +16,6 @@ use Rollbar\Rollbar;
 */
 
 Route::get('/', function () {
-    Rollbar::log('info', 'Test debug message');
+    Rollbar::log(Level::DEBUG, \Log::debug('Test debug message: rollbar'));
     return view('welcome');
-});
-
-Route::get('/rollbar', function () {
-    return \Log::debug('Test debug message: rollbar');
 });
