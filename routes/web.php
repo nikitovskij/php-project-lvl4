@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/rollbar', function () {
-    return \Log::debug('Test debug message');
+    return \Rollbar\Rollbar::log('debug', \Log::debug('Test debug message: rollbar'));
 });
