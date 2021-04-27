@@ -13,8 +13,8 @@ jobs:
         env:
           DB_CONNECTION: pgsql
           POSTGRES_DB: hex_project
-          POSTGRES_USER: psql_user
-          POSTGRES_PASSWORD: psql_pass
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         ports:
           - 5432:5432
         options: >-
@@ -42,8 +42,8 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
           POSTGRES_DB: hex_project
-          POSTGRES_USER: psql_user
-          POSTGRES_PASSWORD: psql_pass
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         with:
           coverageCommand: make test-coverage
           coverageLocation: ${{github.workspace}}/coverage-report:clover
