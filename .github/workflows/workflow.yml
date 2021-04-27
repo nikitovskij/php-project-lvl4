@@ -41,7 +41,7 @@ jobs:
         run: make lint
 
       - name: Run test & publish code coverage
-        uses: paambaati/codeclimate-action@2.7.5
+        uses: paambaati/codeclimate-action@v2.7.5
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
           POSTGRES_DB: hex_project
@@ -50,3 +50,4 @@ jobs:
         with:
           coverageCommand: make test-coverage
           coverageLocation: ${{github.workspace}}/coverage-report:clover
+          debug: true
