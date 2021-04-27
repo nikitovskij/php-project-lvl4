@@ -76,11 +76,4 @@ class TaskStatusController extends Controller
 
         return redirect()->route('task_statuses.index');
     }
-
-    private function getValidatedData(Request $request): array
-    {
-        return $request->validate([
-            'name' => 'required|unique:task_statuses|max:255',
-        ]);
-    }
 }
