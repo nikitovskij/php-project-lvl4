@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TaskStatusController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-Route::get('/rollbar', function () {
-    \Log::debug('Test debug message');
-});
+Auth::routes();
+
+Route::resource('task_statuses', TaskStatusController::class);

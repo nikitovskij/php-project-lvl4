@@ -1,0 +1,17 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.list-style {
+    margin: 5px 0;
+    padding-left: 0;
+
+    list-style: none;
+
+    font-size: 18px;
+}

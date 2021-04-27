@@ -25,32 +25,11 @@ log:
 test:
 	php artisan test
 
+test-coverage:
+	php artisan test --coverage-clover coverage-report
+
 deploy:
 	git push heroku
 
 lint:
-	composer phpcs
-
-lint-fix:
-	composer phpcbf
-
-compose:
-	docker-compose up
-
-compose-test:
-	docker-compose run web make test
-
-compose-bash:
-	docker-compose run web bash
-
-compose-setup: compose-build
-	docker-compose run web make setup
-
-compose-build:
-	docker-compose build
-
-compose-db:
-	docker-compose exec db psql -U postgres
-
-compose-down:
-	docker-compose down -v
+	composer exec phpcs -v

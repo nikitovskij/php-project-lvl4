@@ -12,9 +12,13 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "laracasts/flash": "^3.2",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "rollbar/rollbar-laravel": "^7.0"
+        "laravel/ui": "^3.2",
+        "laravelcollective/html": "^6.2",
+        "rollbar/rollbar-laravel": "^7.0",
+        "squizlabs/php_codesniffer": "^3.6"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -49,6 +53,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
