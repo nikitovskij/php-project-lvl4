@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postrgres
+        image: postgres
         env:
           DB_CONNECTION: pgsql
           POSTGRES_DB: hex_project
