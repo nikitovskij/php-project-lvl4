@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="jumbotron">
-            <h1 class="display-4">Привет от Хекслета!</h1>
-            <p class="lead">Практические курсы по программированию</p>
+            <h1 class="display-4">Simple task manager!</h1>
+            <p class="lead">There should be some description here 😨</p>
             <hr class="my-4">
         </div>
     </div>
