@@ -1,11 +1,3 @@
-@extends('layouts.app')
-
-@php
-/**
- * @var \App\Models\Task $task
- */
-@endphp
-
 <div class="form-group">
     {{ Form::label('name', __('interface.fields.name')) }}
     {{ Form::text('name', $task->name, [
