@@ -8,12 +8,7 @@ use Illuminate\Database\Seeder;
 
 class TaskStatusSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         TaskStatus::factory()
             ->count(4)

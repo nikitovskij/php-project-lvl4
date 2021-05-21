@@ -7,7 +7,6 @@ use App\Http\Requests\UpdateTaskStatusRequest;
 use App\Models\TaskStatus;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class TaskStatusController extends Controller
 {
@@ -71,8 +70,12 @@ class TaskStatusController extends Controller
      */
     public function destroy(TaskStatus $taskStatus): RedirectResponse
     {
-        $taskStatus->delete();
-        flash(__('messages.deleted'))->success();
+        if ($taskStatus->isDeletable()) {
+            $taskStatus->delete();
+            flash(__('messages.task_status.deleted'))->success();
+        } else {
+            flash(__('messages.task_status.failed'))->error();
+        }
 
         return redirect()->route('task_statuses.index');
     }

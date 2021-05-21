@@ -34,8 +34,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li>
-                            <a href="{{ route('task_statuses.index') }}">{{ __('interface.task_statuses.index') }}</a>
+                        <li class="nav-item">
+                            <a href="{{ route('task_statuses.index') }}" class="nav-link">{{ __('interface.task_statuses.index') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('tasks.index') }}" class="nav-link">{{ __('interface.task.index') }}</a>
                         </li>
                     </ul>
 
