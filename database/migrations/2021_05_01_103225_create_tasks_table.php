@@ -20,7 +20,7 @@ class CreateTasksTable extends Migration
                 $table->foreignId('created_by_id')->constrained('users');
                 $table->foreignId('assigned_to_id')->nullable()->constrained('users');
                 $table->string('name')->nullable(false);
-                $table->text('description');
+                $table->text('description')->nullable();
                 $table->timestamps();
                 $table->softDeletes();
             });

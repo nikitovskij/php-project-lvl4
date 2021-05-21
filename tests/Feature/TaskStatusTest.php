@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
 use Faker\Factory;
@@ -32,13 +33,13 @@ class TaskStatusTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $response = $this->actingAs($this->user)->get(route('task_statuses.create'));
         $response->assertStatus(200);
     }
 
-    public function testStore()
+    public function testStore(): void
     {
         $fakeStatus = $this->faker->text(20);
         $response = $this->actingAs($this->user)->post(route('task_statuses.store'), ['name' => $fakeStatus]);
@@ -46,13 +47,13 @@ class TaskStatusTest extends TestCase
         $this->assertDatabaseHas('task_statuses', ['name' => $fakeStatus]);
     }
 
-    public function testEdit()
+    public function testEdit(): void
     {
         $response = $this->actingAs($this->user)->get(route('task_statuses.edit', $this->taskStatus));
         $response->assertStatus(200);
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $fakeStatus = $this->faker->text(20);
         $response = $this
@@ -63,9 +64,24 @@ class TaskStatusTest extends TestCase
         $this->assertDatabaseHas('task_statuses', ['name' => $fakeStatus]);
     }
 
-    public function testDelete()
+    public function testDelete(): void
     {
+        $this->actingAs($this->user)->delete(route('task_statuses.destroy', $this->taskStatus));
+
+        $this->assertSoftDeleted($this->taskStatus);
+    }
+
+    public function testNotAllowedDelete(): void
+    {
+        Task::factory()
+            ->for($this->user, 'author')
+            ->for($this->taskStatus, 'status')
+            ->create();
+
         $response = $this->actingAs($this->user)->delete(route('task_statuses.destroy', $this->taskStatus));
-        $this->assertSoftDeleted('task_statuses', ['name' => $this->taskStatus->name]);
+        $response->assertRedirect();
+
+        $taskStatus = TaskStatus::firstOrFail($this->taskStatus->id);
+        self::assertNull($taskStatus->deleted_at);
     }
 }

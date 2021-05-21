@@ -1,7 +1,12 @@
 <?php
 
 return [
-    'task_statuses.create' => 'Создать статус',
+    'tasks' => [
+        'create' => 'Создать задачу',
+    ],
+    'task_statuses' => [
+        'create' => 'Создать статус'
+    ],
     'create' => 'Создать',
     'edit' => 'Изменить',
     'delete' => 'Удалить',

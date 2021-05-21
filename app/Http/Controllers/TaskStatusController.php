@@ -70,8 +70,12 @@ class TaskStatusController extends Controller
      */
     public function destroy(TaskStatus $taskStatus): RedirectResponse
     {
-        $taskStatus->delete();
-        flash(__('messages.deleted'))->success();
+        if ($taskStatus->isDeletable()) {
+            $taskStatus->delete();
+            flash(__('messages.task_status.deleted'))->success();
+        } else {
+            flash(__('messages.task_status.failed'))->error();
+        }
 
         return redirect()->route('task_statuses.index');
     }
