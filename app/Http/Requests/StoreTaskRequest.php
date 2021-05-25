@@ -31,7 +31,7 @@ class StoreTaskRequest extends FormRequest
             'status_id' => 'required|exists:task_statuses,id',
             'assigned_to_id' => 'nullable|exists:users,id',
             'labels' => 'nullable|array',
-            'labels.*' => 'nullable|int|distinct',
+            'labels.*' => 'nullable|integer|distinct',
         ];
     }
 }
