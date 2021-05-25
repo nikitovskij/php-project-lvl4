@@ -8,7 +8,7 @@
         'method' => 'PATCH',
         ])
     }}
-    @include('statuses.form')
+    @include('task_statuses.form')
     {{ Form::submit(__('buttons.update'), ['class' => 'btn btn-primary']) }}
     {{ Form::close() }}
 @endsection

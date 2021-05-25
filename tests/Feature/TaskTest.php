@@ -14,10 +14,10 @@ class TaskTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected Task $task;
+    private Task $task;
     private User $user;
-    protected TaskStatus $taskStatus;
-    protected Generator $faker;
+    private TaskStatus $taskStatus;
+    private Generator $faker;
 
     protected function setUp(): void
     {

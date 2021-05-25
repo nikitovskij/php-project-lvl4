@@ -54,7 +54,7 @@ class User extends Authenticatable
         return $this->hasMany(Task::class, 'assigned_to_id');
     }
 
-    public function getUserList(): Collection
+    public function getUserNameList(): Collection
     {
         return static::pluck('name', 'id');
     }

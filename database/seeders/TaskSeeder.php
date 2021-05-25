@@ -11,8 +11,9 @@ class TaskSeeder extends Seeder
 {
     public function run(): void
     {
-        $statusesCollection = TaskStatus::select('id')->limit(4)->get();
-        $statusesIds = $statusesCollection->map(fn ($status_id) => ['status_id' => $status_id]);
+        $statusesIds = TaskStatus::all('id')
+            ->map(fn ($status_id) => ['status_id' => $status_id])
+            ->all();
 
         Task::factory()
             ->count(4)

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use App\Models\Label;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 
 class TaskController extends Controller
 {
@@ -18,7 +19,7 @@ class TaskController extends Controller
         $this->authorizeResource(Task::class, 'task');
     }
 
-    public function index(Task $task): View
+    public function index(Task $task): Renderable
     {
         return view('tasks.index', ['tasks' => $task::all()]);
     }
@@ -26,12 +27,13 @@ class TaskController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Task $task, TaskStatus $taskStatus, User $user): View
+    public function create(Task $task, TaskStatus $taskStatus, User $user, Label $label): Renderable
     {
         return view('tasks.create', [
             'task' => $task,
             'taskStatuses' => $taskStatus->getTaskStatusesNameList(),
-            'executors' => $user->getUserList(),
+            'executors' => $user->getUserNameList(),
+            'labels' => $label->getLabelNameList(),
         ]);
     }
 
@@ -46,6 +48,9 @@ class TaskController extends Controller
             ->associate(Auth::user())
             ->save();
 
+        $labelsIds = $request->validated()['labels'];
+        $task->labels()->attach($labelsIds);
+
         flash(__('messages.saved'))->success();
 
         return redirect()->route('tasks.index');
@@ -54,7 +59,7 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Task $task): View
+    public function show(Task $task): Renderable
     {
         return view('tasks.show', ['task' => $task]);
     }
@@ -62,21 +67,25 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Task $task, TaskStatus $taskStatus, User $user): View
+    public function edit(Task $task, TaskStatus $taskStatus, User $user, Label $label): Renderable
     {
         return view('tasks.edit', [
             'task' => $task,
             'taskStatuses' => $taskStatus->getTaskStatusesNameList(),
-            'executors' => $user->getUserList(),
+            'executors' => $user->getUserNameList(),
+            'labels' => $label->getLabelNameList(),
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskRequest $taskRequest, Task $task): RedirectResponse
+    public function update(UpdateTaskRequest $request, Task $task): RedirectResponse
     {
-        $task->update($taskRequest->validated());
+        $task->update($request->validated());
+        $labelsIds = $request->validated()['labels'];
+        $task->labels()->sync($labelsIds);
+
         flash(__('messages.updated'))->success();
 
         return redirect()->route('tasks.show', $task);
@@ -88,6 +97,7 @@ class TaskController extends Controller
     public function destroy(Task $task): RedirectResponse
     {
         $task->delete();
+
         flash(__('messages.task.deleted'))->success();
 
         return redirect()->route('tasks.index');

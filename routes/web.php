@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LabelController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TaskStatusController;
 use Illuminate\Support\Facades\Auth;
@@ -25,4 +26,5 @@ Auth::routes();
 Route::resources([
     'task_statuses' => TaskStatusController::class,
     'tasks' => TaskController::class,
+    'labels' => LabelController::class,
 ]);

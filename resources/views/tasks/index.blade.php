@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="mb-5">{{ __('interface.task.index') }}</h1>
+    <h1 class="mb-5">{{ __('interface.tasks.index') }}</h1>
     @auth
         <a href="{{ route('tasks.create') }}"
            class="btn btn-primary">{{ __('buttons.tasks.create') }}</a>

@@ -32,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
             'value' => null,
             'attributes' => [],
         ]);
-        Form::component('bsTextArea', 'components.form.textarea', ['name', 'value' => null, 'attributes' => []]);
+        Form::component('bsTextArea', 'components.form.textarea', [
+            'name',
+            'value' => null,
+            'attributes' => [],
+        ]);
     }
 }
