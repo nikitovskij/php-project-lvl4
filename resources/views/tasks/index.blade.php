@@ -2,10 +2,15 @@
 
 @section('content')
     <h1 class="mb-5">{{ __('interface.tasks.index') }}</h1>
-    @auth
-        <a href="{{ route('tasks.create') }}"
-           class="btn btn-primary">{{ __('buttons.tasks.create') }}</a>
-    @endauth
+    <div class="d-flex">
+        <div>
+            @include('tasks.filter')
+        </div>
+        @auth
+            <a href="{{ route('tasks.create') }}"
+               class="btn btn-primary ml-auto">{{ __('buttons.tasks.create') }}</a>
+        @endauth
+    </div>
     <table class="table mt-2">
         <thead>
         <tr>
