@@ -52,6 +52,7 @@ class TaskTest extends TestCase
                 'status_id' => $this->taskStatus->id,
             ]);
 
+        $response->assertRedirect();
         $response->assertSessionHasNoErrors();
         $this->assertDatabaseHas('tasks', ['name' => $fakeTask, 'status_id' => $this->taskStatus->id]);
     }
@@ -80,6 +81,7 @@ class TaskTest extends TestCase
                 'status_id' => $this->taskStatus->id,
             ]);
 
+        $response->assertRedirect();
         $response->assertSessionHasNoErrors();
         $this->assertDatabaseMissing('tasks', ['name' => $this->task->name]);
         $this->assertDatabaseHas('tasks', ['name' => $fakeTask, 'status_id' => $this->taskStatus->id]);

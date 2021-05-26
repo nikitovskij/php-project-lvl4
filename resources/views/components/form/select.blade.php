@@ -5,7 +5,7 @@
         ], $attributes)) }}
     @error($params['name'])
     <small class="form-text text-muted">
-        <i>{{ __('interface.form.field.required') }}</i>
+        <i>{{ $message }}</i>
     </small>
     @enderror
 </div>

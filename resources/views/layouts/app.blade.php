@@ -84,15 +84,6 @@
             </div>
         </nav>
         <main class="container py-4">
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul class="list-style">
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             @include('flash::message')
             @yield('content')
         </main>

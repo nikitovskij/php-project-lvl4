@@ -9,11 +9,13 @@ use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use function PHPUnit\Framework\isEmpty;
 
 class TaskController extends Controller
 {
@@ -67,8 +69,9 @@ class TaskController extends Controller
             ->associate(Auth::user())
             ->save();
 
-        $labelsIds = $request->validated()['labels'];
-        $task->labels()->attach($labelsIds);
+        $labels = $this->getLabelIds($request);
+
+        $task->labels()->sync($labels);
 
         flash(__('messages.saved'))->success();
 
@@ -102,8 +105,9 @@ class TaskController extends Controller
     public function update(UpdateTaskRequest $request, Task $task): RedirectResponse
     {
         $task->update($request->validated());
-        $labelsIds = $request->validated()['labels'];
-        $task->labels()->sync($labelsIds);
+        $labels = $this->getLabelIds($request);
+
+        $task->labels()->sync($labels);
 
         flash(__('messages.updated'))->success();
 
@@ -120,5 +124,10 @@ class TaskController extends Controller
         flash(__('messages.task.deleted'))->success();
 
         return redirect()->route('tasks.index');
+    }
+
+    private function getLabelIds(FormRequest $request): ?array
+    {
+        return array_filter($request->get('labels', []));
     }
 }
