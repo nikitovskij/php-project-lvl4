@@ -19,6 +19,6 @@ class HomeController extends Controller
      */
     public function index(): Renderable
     {
-        return view('/');
+        return view('index');
     }
 }
