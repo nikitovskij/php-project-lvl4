@@ -11,6 +11,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -124,8 +125,8 @@ class TaskController extends Controller
         return redirect()->route('tasks.index');
     }
 
-    private function getLabelIds(FormRequest $request): ?array
+    private function getLabelIds(FormRequest $request): Collection
     {
-        return array_filter($request->get('labels', []));
+        return collect($request->get('labels', []))->filter();
     }
 }
