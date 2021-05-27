@@ -21,4 +21,3 @@ make test
 ```
 
 ### Project link
-https://stm-project.herokuapp.com/
