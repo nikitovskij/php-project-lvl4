@@ -9,7 +9,7 @@
     <table class="table mt-2">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>{{ __('interface.fields.id') }}</th>
             <th>{{ __('interface.fields.name') }}</th>
             <th>{{ __('interface.fields.description') }}</th>
             <th>{{ __('interface.fields.created_at') }}</th>

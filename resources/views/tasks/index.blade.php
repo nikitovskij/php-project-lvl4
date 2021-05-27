@@ -14,7 +14,7 @@
     <table class="table mt-2">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>{{ __('interface.fields.id') }}</th>
             <th>{{ __('interface.fields.status') }}</th>
             <th>{{ __('interface.fields.name') }}</th>
             <th>{{ __('interface.fields.author') }}</th>
