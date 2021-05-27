@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
+use App\Http\Requests\TaskRequest;
 use App\Models\Label;
 use App\Models\Task;
 use App\Models\TaskStatus;
@@ -15,7 +14,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
-use function PHPUnit\Framework\isEmpty;
 
 class TaskController extends Controller
 {
@@ -61,7 +59,7 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTaskRequest $request, Task $task): RedirectResponse
+    public function store(TaskRequest $request, Task $task): RedirectResponse
     {
         $task
             ->fill($request->validated())
@@ -102,7 +100,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskRequest $request, Task $task): RedirectResponse
+    public function update(TaskRequest $request, Task $task): RedirectResponse
     {
         $task->update($request->validated());
         $labels = $this->getLabelIds($request);

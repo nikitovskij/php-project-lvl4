@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LabelRequest;
 use App\Http\Requests\StoreLabelRequest;
 use App\Http\Requests\UpdateLabelRequest;
 use App\Models\Label;
@@ -34,7 +35,7 @@ class LabelController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLabelRequest $request, Label $label): RedirectResponse
+    public function store(LabelRequest $request, Label $label): RedirectResponse
     {
         $label
             ->fill($request->validated())
@@ -56,7 +57,7 @@ class LabelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLabelRequest $request, Label $label): RedirectResponse
+    public function update(LabelRequest $request, Label $label): RedirectResponse
     {
         $label->update($request->validated());
 

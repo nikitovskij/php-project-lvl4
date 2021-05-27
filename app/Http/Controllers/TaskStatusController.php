@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTaskStatusRequest;
-use App\Http\Requests\UpdateTaskStatusRequest;
+use App\Http\Requests\TaskStatusRequest;
 use App\Models\TaskStatus;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -34,7 +33,7 @@ class TaskStatusController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTaskStatusRequest $request, TaskStatus $task_status): RedirectResponse
+    public function store(TaskStatusRequest $request, TaskStatus $task_status): RedirectResponse
     {
         $task_status
             ->fill($request->validated())
@@ -56,7 +55,7 @@ class TaskStatusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskStatusRequest $request, TaskStatus $task_status): RedirectResponse
+    public function update(TaskStatusRequest $request, TaskStatus $task_status): RedirectResponse
     {
         $task_status->update($request->all());
 
