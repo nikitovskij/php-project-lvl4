@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    private const INT_PATTERN = '[0-9]+';
+
     /**
      * The path to the "home" route for your application.
      *
@@ -35,6 +37,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Route::patterns([
+            'task' => self::INT_PATTERN,
+            'task_status' => self::INT_PATTERN,
+            'label' => self::INT_PATTERN,
+        ]);
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
