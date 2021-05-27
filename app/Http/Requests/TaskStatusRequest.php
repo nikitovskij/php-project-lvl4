@@ -18,7 +18,7 @@ class TaskStatusRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      */
-    public function rules():array
+    public function rules(): array
     {
         return [
             'name' => [
@@ -38,6 +38,4 @@ class TaskStatusRequest extends FormRequest
             'name.unique' => 'Статус с таким именем уже существует'
         ];
     }
-
-
 }

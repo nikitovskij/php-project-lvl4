@@ -2,7 +2,7 @@
 
 return [
     'accepted' => 'Вы должны принять :attribute.',
-    'active_url'=> 'Поле :attribute содержит недействительный URL.',
+    'active_url' => 'Поле :attribute содержит недействительный URL.',
     'after' => 'В поле :attribute должна быть дата больше :date.',
     'after_or_equal' => 'В поле :attribute должна быть дата больше или равняться :date.',
     'alpha' => 'Поле :attribute может содержать только буквы.',

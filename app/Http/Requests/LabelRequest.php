@@ -39,5 +39,4 @@ class LabelRequest extends FormRequest
             'name.unique' => 'Метка с таким именем уже существует',
         ];
     }
-
 }
