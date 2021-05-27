@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LabelRequest;
-use App\Http\Requests\StoreLabelRequest;
-use App\Http\Requests\UpdateLabelRequest;
 use App\Models\Label;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
