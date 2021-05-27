@@ -34,7 +34,7 @@
                     <td><a href="{{ route('tasks.show', $task) }}">{{ $task->name }}</a></td>
                     <td>{{ $task->author->name }}</td>
                     <td>{{ optional($task->executor)->name }}</td>
-                    <td>{{ date_format($task->created_at, 'd.m.Y') }}</td>
+                    <td>{{ $task->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
                             @can('delete', $task)

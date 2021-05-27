@@ -109,7 +109,7 @@ class TaskController extends Controller
 
         flash(__('messages.task.updated'))->success();
 
-        return redirect()->route('tasks.show', $task);
+        return redirect()->route('tasks.index', $task);
     }
 
     /**
