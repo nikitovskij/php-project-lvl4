@@ -40,7 +40,7 @@ class LabelController extends Controller
             ->fill($request->validated())
             ->save();
 
-        flash(__('messages.saved'))->success();
+        flash(__('messages.labels.saved'))->success();
 
         return redirect()->route('labels.index');
     }
@@ -60,7 +60,7 @@ class LabelController extends Controller
     {
         $label->update($request->validated());
 
-        flash(__('messages.updated'))->success();
+        flash(__('messages.labels.updated'))->success();
 
         return redirect()->route('labels.index');
     }

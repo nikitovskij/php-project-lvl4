@@ -40,7 +40,7 @@ class TaskStatusController extends Controller
             ->fill($request->validated())
             ->save();
 
-        flash(__('messages.saved'))->success();
+        flash(__('messages.task_status.saved'))->success();
 
         return redirect()->route('task_statuses.index');
     }
@@ -60,7 +60,7 @@ class TaskStatusController extends Controller
     {
         $taskStatus->update($request->all());
 
-        flash(__('messages.updated'))->success();
+        flash(__('messages.task_status.updated'))->success();
 
         return redirect()->route('task_statuses.index');
     }

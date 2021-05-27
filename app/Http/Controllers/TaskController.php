@@ -73,7 +73,7 @@ class TaskController extends Controller
 
         $task->labels()->sync($labels);
 
-        flash(__('messages.saved'))->success();
+        flash(__('messages.task.saved'))->success();
 
         return redirect()->route('tasks.index');
     }
@@ -109,7 +109,7 @@ class TaskController extends Controller
 
         $task->labels()->sync($labels);
 
-        flash(__('messages.updated'))->success();
+        flash(__('messages.task.updated'))->success();
 
         return redirect()->route('tasks.show', $task);
     }
