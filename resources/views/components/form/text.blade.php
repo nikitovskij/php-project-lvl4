@@ -4,8 +4,6 @@
         'class' => sprintf('form-control%s', $errors->has($name) ? ' is-invalid' : null),
         ]) }}
     @error($name)
-        <small class="form-text text-muted">
-            <i>{{ $message }}</i>
-        </small>
+        <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
