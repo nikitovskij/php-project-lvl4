@@ -9,7 +9,7 @@
     <table class="table mt-2">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>{{ __('interface.fields.id') }}</th>
             <th>{{ __('interface.fields.name') }}</th>
             <th>{{ __('interface.fields.created_at') }}</th>
             @auth
@@ -21,14 +21,14 @@
         @isset($taskStatuses)
             @foreach($taskStatuses as $taskStatus)
                 <tr>
-                    <th scope="row">{{ $taskStatus->id }}</th>
+                    <td>{{ $taskStatus->id }}</td>
                     <td>{{ $taskStatus->name }}</td>
-                    <td>{{ date_format($taskStatus->created_at, 'd.m.Y') }}</td>
+                    <td>{{ $taskStatus->created_at->format('d.m.Y') }}</td>
                     @auth
                         <td>
                             <a href="{{ route('task_statuses.destroy', $taskStatus) }}"
                                data-confirm="{{ __('messages.confirmation') }}" data-method="delete" class="text-danger"
-                               rel="nofollow">{{ __('buttons.delete') }}</a>
+                               >{{ __('buttons.delete') }}</a>
                             <a href="{{ route('task_statuses.edit', $taskStatus) }}">{{ __('buttons.edit') }}</a>
                         </td>
                     @endauth
