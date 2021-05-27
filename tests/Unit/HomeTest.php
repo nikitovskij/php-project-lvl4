@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit;
 
 use Tests\TestCase;
 
@@ -9,7 +9,7 @@ class HomeTest extends TestCase
     /**
      * A basic test example.
      */
-    public function testBasicTest(): void
+    public function testHomeTest(): void
     {
         $response = $this->get('/');
 
