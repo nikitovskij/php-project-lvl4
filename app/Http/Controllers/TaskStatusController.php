@@ -18,25 +18,25 @@ class TaskStatusController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(TaskStatus $taskStatus): Renderable
+    public function index(TaskStatus $task_status): Renderable
     {
-        return view('task_statuses.index', ['taskStatuses' => $taskStatus::all()]);
+        return view('task_statuses.index', ['taskStatuses' => $task_status::all()]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(TaskStatus $taskStatus): Renderable
+    public function create(TaskStatus $task_status): Renderable
     {
-        return view('task_statuses.create', ['taskStatus' => $taskStatus]);
+        return view('task_statuses.create', ['taskStatus' => $task_status]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTaskStatusRequest $request, TaskStatus $taskStatus): RedirectResponse
+    public function store(StoreTaskStatusRequest $request, TaskStatus $task_status): RedirectResponse
     {
-        $taskStatus
+        $task_status
             ->fill($request->validated())
             ->save();
 
@@ -48,17 +48,17 @@ class TaskStatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskStatus $taskStatus): Renderable
+    public function edit(TaskStatus $task_status): Renderable
     {
-        return view('task_statuses.edit', ['taskStatus' => $taskStatus]);
+        return view('task_statuses.edit', ['taskStatus' => $task_status]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskStatusRequest $request, TaskStatus $taskStatus): RedirectResponse
+    public function update(UpdateTaskStatusRequest $request, TaskStatus $task_status): RedirectResponse
     {
-        $taskStatus->update($request->all());
+        $task_status->update($request->all());
 
         flash(__('messages.task_status.updated'))->success();
 
@@ -68,10 +68,10 @@ class TaskStatusController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskStatus $taskStatus): RedirectResponse
+    public function destroy(TaskStatus $task_status): RedirectResponse
     {
-        if ($taskStatus->isDeletable()) {
-            $taskStatus->delete();
+        if ($task_status->isDeletable()) {
+            $task_status->delete();
 
             flash(__('messages.task_status.deleted'))->success();
         } else {
